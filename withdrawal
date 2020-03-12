@@ -79,25 +79,14 @@ public class Withdrawal extends Transaction {
             screen.displayMessage("\nChoose a withdrawal amount: ");
 
             int input = keypad.getInput(); 
-
-           
-            switch (input) {
-                case 1: 
-                case 2: 
-                case 3: 
-                case 4:
-                case 5:
-                    choice = amounts[input]; 
-                    break;
-                case CANCELED: 
-                    choice = CANCELED; 
-                    break;
-                default: 
-                    screen.displayMessageLine(
-                            "\nIvalid . Try again.");
-            } 
+       
+           if (input >= 1 && input <= 5) {
+			   choice = amounts[input]; 
+		   } else if (input == CANCELED) {
+			   choice = CANCELED;
+		   } else
+			   screen.displayMessageLine("\nIvalid . Try again.");
         } 
-
         return choice;
     } 
 } 
